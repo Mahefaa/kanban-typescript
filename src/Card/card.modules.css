@@ -1,7 +1,7 @@
 .card{
     border:2px solid black;
     border-radius:5%;
-    margin:1vh 2.5vw;
+    margin:1vh 0vw;
     flex-basis:28vw;
     height:fit-content;
     min-height:35vh;
@@ -15,6 +15,11 @@
     text-align: center;
     color: white;
 }
+.card__body{
+    border: 2px solid transparent;
+    border-radius:5%;
+    margin-left: 10px;
+}
 .todo{
     background-color:#5458d7;
 }
@@ -27,9 +32,14 @@
 .form__button{
     display: none;
 }
-
-.add__item label{
-    padding-right:22vw;
+.add__item{
+    border: 2px solid transparent;
+    margin:5px 0px 0px 10px;
+    border-radius: 5%;
+    width: 28vw;
+    background-color:whitesmoke !important;
+    height:10vh;
+    text-align:justify;
 }
 .add__item:hover{
     background-size:contain;

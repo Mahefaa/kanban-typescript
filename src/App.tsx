@@ -27,11 +27,23 @@ function App() {
     const [background,setBackground]=useState<string>("todo");
     const [origin,setOrigin]=useState<cardItemStatusEnm>("" as cardItemStatusEnm);
     let mod=showForm?"blurred":"";
+
   return (
       <div className={"App"}>
-          <nav>
-                  <button onClick={()=>setShowForm(true)} id={"nav__btn"}>Add Task</button>
-          </nav>
+          <header>
+              <div className={"header"}>
+                  <h2>My TypeScript To Do List</h2>
+                  <p>Planned dreams become reality</p>
+              </div>
+
+              <div>
+                      <button onClick={()=> {
+                          setShowForm(true);
+                          setNewItem({} as cardItemItf);
+                      }} id={"top__btn"}>Add Task</button>
+              </div>
+              <hr/>
+          </header>
 
           <div className={"body "+mod}>
             <Card
@@ -62,12 +74,13 @@ function App() {
                 setOrigin={setOrigin}
             />
           </div>
-          {showForm&&<Form classPlus={background} setBackground={setBackground}
+          {showForm&&
+              <Form classPlus={background} setBackground={setBackground}
                             setShowForm={setShowForm} newItem={newItem}
                            arraySetter={[setTodo,setDoing,setDone]}
                            origin={origin}
                            setOrigin={setOrigin}
-          />}
+            />}
       </div>
   );
 }

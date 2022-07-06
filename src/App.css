@@ -2,20 +2,58 @@
   --nav_height:10vh;
 }
 .App{
-  position:relative;
+    position:relative;
+    margin: 1vh 2vw;
+    overflow-x: hidden;
 }
 .body{
   display: flex;
   flex-direction: row;
+  gap:3vw;
 }
-nav{
+header .header{
+  margin-top: 5vh;
   width: 100vw;
   height: var(--nav_height);
-  border:1px solid black;
-  background-color:#5458d7;
 }
-#nav__btn{
+header #top__btn {
+   background-color: #1652f0;
+   border: 1px solid transparent;
+   border-radius: 3px;
+   box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+   box-sizing: border-box;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+   font-size: 13px;
+   font-weight: 400;
+   line-height: 1.15385;
+   margin: 0;
+   outline: none;
+   padding: 8px .8em;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   vertical-align: baseline;
+   white-space: nowrap;
+}
 
+header #top__btn:hover,
+header #top__btn:focus {
+  background-color: #07c;
+}
+
+header #top__btn:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+header #top__btn:active {
+  background-color: #0064bd;
+  box-shadow: none;
 }
 /*Form CSS*/
 .container{
