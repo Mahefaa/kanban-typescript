@@ -1,0 +1,35 @@
+*{
+  --nav_height:10vh;
+}
+.App{
+  position:relative;
+}
+.body{
+  display: flex;
+  flex-direction: row;
+}
+nav{
+  width: 100vw;
+  height: var(--nav_height);
+  border:1px solid black;
+  background-color:#5458d7;
+}
+#nav__btn{
+
+}
+/*Form CSS*/
+.container{
+  border: 2px solid black;
+  border-radius: 5%;
+  min-width: 50vw;
+  width: fit-content;
+  min-height: 50vh;
+  height: fit-content;
+  background-color:white;
+  position: absolute;
+  top:var(--nav_height);
+  left:25vw;
+}
+.blurred{
+  opacity: 0.1;
+}
