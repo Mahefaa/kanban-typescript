@@ -6,9 +6,10 @@ const Form : React.FC<{
     setShowForm:Dispatch<SetStateAction<boolean>>,
     newItem:cardItemItf,
     arraySetter:Dispatch<SetStateAction<cardItemItf[]>>[],
+    method:string
 }> = (props) =>{
 
-    const {arraySetter,newItem, setShowForm} = props;
+    const {arraySetter,newItem, setShowForm,method} = props;
     const [setTodo,setDoing,setDone]=arraySetter;
     const [origin,setOrigin]=useState<cardItemStatusEnm>(newItem.status);
     let click=()=>{
@@ -77,28 +78,30 @@ const Form : React.FC<{
                                 description:desc,
                                 status:status
                             }
-                            switch (origin) {
-                                case cardItemStatusEnm.TODO:
-                                    setTodo((prevState) => {
-                                        let index=prevState.indexOf(newItem);
-                                        prevState.splice(index,1);
-                                        return prevState;
-                                    })
-                                    break;
-                                case cardItemStatusEnm.DOING:
-                                    setDoing((prevState)=> {
-                                        prevState.splice(prevState.indexOf(newItem),1);
-                                        return prevState;
-                                    })
-                                    break;
-                                case cardItemStatusEnm.DONE:
-                                    setDone((prevState)=> {
-                                        prevState.splice(prevState.indexOf(newItem),1);
-                                        return prevState;
-                                    })
-                                    break;
-                                default:
-                                    break;
+                            if(method==="update"){
+                                switch (origin) {
+                                    case cardItemStatusEnm.TODO:
+                                        setTodo((prevState) => {
+                                            let index=prevState.indexOf(newItem);
+                                            prevState.splice(index,1);
+                                            return prevState;
+                                        })
+                                        break;
+                                    case cardItemStatusEnm.DOING:
+                                        setDoing((prevState)=> {
+                                            prevState.splice(prevState.indexOf(newItem),1);
+                                            return prevState;
+                                        })
+                                        break;
+                                    case cardItemStatusEnm.DONE:
+                                        setDone((prevState)=> {
+                                            prevState.splice(prevState.indexOf(newItem),1);
+                                            return prevState;
+                                        })
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
 
                             switch (status) {

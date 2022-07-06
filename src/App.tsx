@@ -22,7 +22,7 @@ function App() {
             status:cardItemStatusEnm.DOING}
         ));
     const [done,setDone] = useState<cardItemItf[]>(new Array(0));
-
+    const [method,setMethod]=useState<string>("add");
     const [newItem,setNewItem]=useState<cardItemItf>({title:"",description:"",status:cardItemStatusEnm.TODO});
     const [showForm,setShowForm]=useState<boolean>(false);
     let mod=showForm?"blurred":"";
@@ -33,6 +33,7 @@ function App() {
               <Header setShowForm={setShowForm} setNewItem={setNewItem}/>
               <div className={"body "+mod}>
                 <Card
+                    setMethod={setMethod}
                     title={`Ready To Start`}
                     status={cardItemStatusEnm.TODO}
                     cardItems={todo}
@@ -41,6 +42,7 @@ function App() {
                     id={0}
                 />
                 <Card
+                    setMethod={setMethod}
                     title={"Working On It"}
                     status={cardItemStatusEnm.DOING}
                     cardItems={doing}
@@ -49,6 +51,7 @@ function App() {
                     id={1}
                 />
                 <Card
+                    setMethod={setMethod}
                     title={"Done"}
                     status={cardItemStatusEnm.DONE}
                     cardItems={done}
@@ -60,9 +63,10 @@ function App() {
           </React.StrictMode>
           {showForm&&
               <Form
-                    setShowForm={setShowForm}
-                    newItem={newItem}
-                    arraySetter={[setTodo,setDoing,setDone]}
+                  method={method}
+                  setShowForm={setShowForm}
+                  newItem={newItem}
+                  arraySetter={[setTodo,setDoing,setDone]}
             />}
       </div>
   );

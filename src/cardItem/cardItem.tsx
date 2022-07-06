@@ -5,8 +5,9 @@ export const CardItem : React.FC<{
     item:cardItemItf,
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
     setShowForm:Dispatch<SetStateAction<boolean>>,
+    setMethod:Dispatch<SetStateAction<string>>
 }> = (props) =>{
-    let {item,setNewItem,setShowForm}=props;
+    let {item,setNewItem,setShowForm,setMethod}=props;
     let {title,description,status}=item;
     const [inputMode,setInputMode]=useState<boolean>(false);
     let setTitle: (arg0: string) => void,setDesc: (arg0: string) => void;
@@ -35,6 +36,7 @@ export const CardItem : React.FC<{
                     status:status,
                 }
                 setNewItem(item);
+                setMethod("update");
                 setShowForm(true);
             }}>
                 <label htmlFor={"status"}>Status : </label>
