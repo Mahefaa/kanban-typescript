@@ -4,17 +4,18 @@ import './Card/Card';
 import Card from "./Card/Card";
 import {cardItemItf, cardItemStatusEnm} from "./interface/template";
 import Form from "./Form/form";
+import Header from "./header/header";
 
 function App() {
 
-    const [todo,setTodo] = useState<cardItemItf[]>(new Array(3).fill(null)
+    const [todo,setTodo] = useState<cardItemItf[]>(new Array(2).fill(null)
         .map((item,index)=>(item)={
             title:`TODO item ${index}`,
             description:"Lorem ipsum",
             status:cardItemStatusEnm.TODO}
         ));
 
-    const [doing,setDoing] = useState<cardItemItf[]>(new Array(2).fill(null)
+    const [doing,setDoing] = useState<cardItemItf[]>(new Array(1).fill(null)
         .map((item,index)=>(item)={
             title:`DOING item ${index}`,
             description:"Lorem ipsum",
@@ -24,27 +25,13 @@ function App() {
 
     const [newItem,setNewItem]=useState<cardItemItf>({} as cardItemItf);
     const [showForm,setShowForm]=useState<boolean>(false);
-    const [background,setBackground]=useState<string>("todo");
+    const [background,setBackground]=useState<string>("");
     const [origin,setOrigin]=useState<cardItemStatusEnm>("" as cardItemStatusEnm);
     let mod=showForm?"blurred":"";
 
   return (
       <div className={"App"}>
-          <header>
-              <div className={"header"}>
-                  <h2>My TypeScript To Do List</h2>
-                  <p>Planned dreams become reality</p>
-              </div>
-
-              <div>
-                      <button onClick={()=> {
-                          setShowForm(true);
-                          setNewItem({} as cardItemItf);
-                      }} id={"top__btn"}>Add Task</button>
-              </div>
-              <hr/>
-          </header>
-
+          <Header setShowForm={setShowForm} setNewItem={setNewItem}/>
           <div className={"body "+mod}>
             <Card
                 title={`Ready To Start`}
@@ -75,11 +62,13 @@ function App() {
             />
           </div>
           {showForm&&
-              <Form classPlus={background} setBackground={setBackground}
-                            setShowForm={setShowForm} newItem={newItem}
-                           arraySetter={[setTodo,setDoing,setDone]}
-                           origin={origin}
-                           setOrigin={setOrigin}
+              <Form
+                    background={background}
+                    setBackground={setBackground}
+                    setShowForm={setShowForm}
+                    newItem={newItem}
+                    arraySetter={[setTodo,setDoing,setDone]}
+                    origin={origin}
             />}
       </div>
   );

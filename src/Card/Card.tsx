@@ -22,7 +22,7 @@ const List : React.FC<{
             <div className={"card__body"}>
                 <ul>
                     {
-                        (cardItems||[{} as cardItemItf]).map((item)=>(
+                        (cardItems||[{} as cardItemItf]).map((item,index)=>(
                         <li key={`${item.title}-${item.description}`}>
                             <CardItem item={item} setNewItem={setNewItem} setShowForm={setShowForm}/>
                         </li>

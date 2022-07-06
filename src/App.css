@@ -1,6 +1,10 @@
 *{
   --nav_height:10vh;
 }
+textarea{
+    resize: vertical;
+    max-height:15vh;
+}
 .App{
     position:relative;
     margin: 1vh 2vw;
@@ -9,7 +13,7 @@
 .body{
   display: flex;
   flex-direction: row;
-  gap:3vw;
+  gap:2vw;
 }
 header .header{
   margin-top: 5vh;

@@ -17,8 +17,10 @@ export const CardItem : React.FC<{
             {
                 inputMode ?
                     <>
-                        <input type={"text"} value={title} onChange={(event)=>setTitle(event.target.value)}/>
-                        <textarea value={description} onChange={(event)=>setDesc(event.target.value)}/>
+                        <label htmlFor={"title"}><h4>Title</h4></label>
+                        <input type={"text"} id={"title"} value={title} onChange={(event)=>setTitle(event.target.value)}/>
+                        <label htmlFor={"description"}>Description</label>
+                        <textarea value={description} onChange={(event)=>setDesc(event.target.value)} id={"description"}/>
                     </>
                     :
                     <>

@@ -7,5 +7,5 @@ export enum cardItemStatusEnm{
 export interface cardItemItf{
     title : string ;
     description : string;
-    status? : cardItemStatusEnm;
+    status: cardItemStatusEnm;
 };
