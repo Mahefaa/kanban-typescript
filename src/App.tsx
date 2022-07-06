@@ -23,15 +23,13 @@ function App() {
         ));
     const [done,setDone] = useState<cardItemItf[]>(new Array(0));
 
-    const [newItem,setNewItem]=useState<cardItemItf>({} as cardItemItf);
+    const [newItem,setNewItem]=useState<cardItemItf>({title:"",description:"",status:cardItemStatusEnm.TODO});
     const [showForm,setShowForm]=useState<boolean>(false);
-    const [background,setBackground]=useState<string>("todo");
     let mod=showForm?"blurred":"";
 
   return (
       <div className={"App"}>
           <React.StrictMode>
-
               <Header setShowForm={setShowForm} setNewItem={setNewItem}/>
               <div className={"body "+mod}>
                 <Card
@@ -62,8 +60,6 @@ function App() {
           </React.StrictMode>
           {showForm&&
               <Form
-                    background={background}
-                    setBackground={setBackground}
                     setShowForm={setShowForm}
                     newItem={newItem}
                     arraySetter={[setTodo,setDoing,setDone]}

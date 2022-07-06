@@ -3,16 +3,14 @@ import './form.modules.css';
 import {cardItemItf, cardItemStatusEnm} from "../interface/template";
 
 const Form : React.FC<{
-    setBackground:Dispatch<SetStateAction<string>>,
-    background:string,
     setShowForm:Dispatch<SetStateAction<boolean>>,
     newItem:cardItemItf,
     arraySetter:Dispatch<SetStateAction<cardItemItf[]>>[],
 }> = (props) =>{
 
-    const {arraySetter,setBackground,background, newItem, setShowForm} = props;
+    const {arraySetter,newItem, setShowForm} = props;
     const [setTodo,setDoing,setDone]=arraySetter;
-    const origin=newItem.status;
+    const [origin,setOrigin]=useState<cardItemStatusEnm>(newItem.status);
     let click=()=>{
         window.removeEventListener("click",click);
         setShowForm(false);
@@ -51,14 +49,14 @@ const Form : React.FC<{
                     <label htmlFor={"form__select"}>Status</label>
                     <select
                         id={"form__select"}
-                        className={background+" form__item"}
+                        className={origin.toLowerCase()+" form__item"}
                         onChange={(event)=> {
                         window.removeEventListener("click",click);
-                        setBackground(event.target.value.toLowerCase());
                         setStatus(event.target.value as cardItemStatusEnm);
+                        setOrigin(status);
                     }}>{
-                        ["TODO","DOING","DONE"].map((item)=>(
-                            <option selected={item===background}>{item}</option>
+                        Object.values(cardItemStatusEnm).map((item)=>(
+                            <option selected={item===origin}>{item}</option>
                         ))
                     }
                     </select>

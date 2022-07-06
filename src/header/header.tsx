@@ -1,4 +1,4 @@
-import {cardItemItf} from "../interface/template";
+import {cardItemItf, cardItemStatusEnm} from "../interface/template";
 import React, {Dispatch, SetStateAction} from "react";
 
 const Header : React.FC<{
@@ -16,7 +16,7 @@ const Header : React.FC<{
             <div>
                 <button onClick={()=> {
                     setShowForm(true);
-                    setNewItem({} as cardItemItf);
+                    setNewItem({title:"",description:"",status:cardItemStatusEnm.TODO});
                 }} id={"top__btn"}>Add Task</button>
             </div>
             <hr/>

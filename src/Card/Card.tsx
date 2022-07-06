@@ -3,13 +3,13 @@ import {cardItemItf} from '../interface/template';
 import {CardItem} from "../cardItem/cardItem";
 import React, {Dispatch, SetStateAction} from "react";
 
-const List : React.FC<{
+const Card : React.FC<{
     title:string,
     cardItems:cardItemItf[],
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
     classPlus:string,
     setShowForm:Dispatch<SetStateAction<boolean>>,
-    id:number
+    id:number,
 
 }> = (props) =>{
 
@@ -27,7 +27,9 @@ const List : React.FC<{
                         </li>
                     ))}
                 </ul>
-                <div className={"add__item"} onClick={()=>setShowForm(true)}>
+                <div className={"add__item"} onClick={()=> {
+                    setShowForm(true);
+                }}>
                     <label htmlFor={"button"+id}>+ Add item</label>
                     <button
                         id={"button"+id} className={"form__button"}
@@ -38,4 +40,4 @@ const List : React.FC<{
 
     )
 };
-export default List;
+export default Card;
