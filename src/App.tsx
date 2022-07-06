@@ -34,7 +34,7 @@ function App() {
               <div className={"body "+mod}>
                 <Card
                     title={`Ready To Start`}
-                    classPlus={"todo"}
+                    status={cardItemStatusEnm.TODO}
                     cardItems={todo}
                     setNewItem={setNewItem}
                     setShowForm={setShowForm}
@@ -42,7 +42,7 @@ function App() {
                 />
                 <Card
                     title={"Working On It"}
-                    classPlus={"doing"}
+                    status={cardItemStatusEnm.DOING}
                     cardItems={doing}
                     setNewItem={setNewItem}
                     setShowForm={setShowForm}
@@ -50,7 +50,7 @@ function App() {
                 />
                 <Card
                     title={"Done"}
-                    classPlus={"done"}
+                    status={cardItemStatusEnm.DONE}
                     cardItems={done}
                     setNewItem={setNewItem}
                     setShowForm={setShowForm}

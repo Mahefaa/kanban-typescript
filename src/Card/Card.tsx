@@ -1,5 +1,5 @@
 import './card.modules.css';
-import {cardItemItf} from '../interface/template';
+import {cardItemItf, cardItemStatusEnm} from '../interface/template';
 import {CardItem} from "../cardItem/cardItem";
 import React, {Dispatch, SetStateAction} from "react";
 
@@ -7,17 +7,17 @@ const Card : React.FC<{
     title:string,
     cardItems:cardItemItf[],
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
-    classPlus:string,
+    status:cardItemStatusEnm,
     setShowForm:Dispatch<SetStateAction<boolean>>,
-    id:number,
+    id:number
 
 }> = (props) =>{
 
-    const {title,setNewItem,classPlus,setShowForm,id}=props;
+    const {title,setNewItem,status,setShowForm,id}=props;
     let {cardItems}=props;
     return(
-        <div className={"card "+classPlus}>
-            <h3 className={"card__title "}>{`${title} / ${cardItems.length}`}</h3>
+        <div className={"card "+status.toLowerCase()}>
+            <h3 className={"card__title "}>{`${title} / ${cardItems.length} task(s)`}</h3>
             <div className={"card__body"}>
                 <ul>
                     {
@@ -29,6 +29,11 @@ const Card : React.FC<{
                 </ul>
                 <div className={"add__item"} onClick={()=> {
                     setShowForm(true);
+                    setNewItem({
+                        title:"",
+                        description:"",
+                        status:status
+                    })
                 }}>
                     <label htmlFor={"button"+id}>+ Add item</label>
                     <button
