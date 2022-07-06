@@ -1,0 +1,8 @@
+.card__item{
+    margin-bottom:0px;
+    width: 28vw;
+    background-color:whitesmoke !important;
+    min-height: 20vh;
+    height: fit-content;
+    text-align:justify;
+}

@@ -1,0 +1,40 @@
+.card{
+    border:2px solid black;
+    border-radius:5%;
+    margin:1vh 2.5vw;
+    flex-basis:28vw;
+    height:fit-content;
+    min-height:35vh;
+    text-align: left;
+}
+.card ul{
+    list-style: none;
+    padding-left: 5px;
+}
+.card__title{
+    text-align: center;
+    color: white;
+}
+.todo{
+    background-color:#5458d7;
+}
+.doing{
+    background-color: #f1ae53;
+}
+.done{
+    background-color:#5ac57d;
+}
+.form__button{
+    display: none;
+}
+
+.add__item label{
+    padding-right:22vw;
+}
+.add__item:hover{
+    background-size:contain;
+    color:red;
+    opacity: .5;
+}
+
+/**744*736*/

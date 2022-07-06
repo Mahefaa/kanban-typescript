@@ -1,0 +1,11 @@
+.container form{
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 2vw;
+}
+.container form .form__item{
+    margin: 3vh 0vw;
+    min-width: 100%;
+    resize: vertical;
+    max-height: 15vh;
+}
