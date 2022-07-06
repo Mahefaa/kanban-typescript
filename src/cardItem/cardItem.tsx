@@ -29,6 +29,11 @@ export const CardItem : React.FC<{
                     </>
             }
             <span onClick={()=>{
+                item={
+                    title:title,
+                    description:description,
+                    status:status,
+                }
                 setNewItem(item);
                 setShowForm(true);
             }}>
