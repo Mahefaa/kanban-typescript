@@ -25,42 +25,41 @@ function App() {
 
     const [newItem,setNewItem]=useState<cardItemItf>({} as cardItemItf);
     const [showForm,setShowForm]=useState<boolean>(false);
-    const [background,setBackground]=useState<string>("");
-    const [origin,setOrigin]=useState<cardItemStatusEnm>("" as cardItemStatusEnm);
+    const [background,setBackground]=useState<string>("todo");
     let mod=showForm?"blurred":"";
 
   return (
       <div className={"App"}>
-          <Header setShowForm={setShowForm} setNewItem={setNewItem}/>
-          <div className={"body "+mod}>
-            <Card
-                title={`Ready To Start`}
-                classPlus={"todo"}
-                cardItems={todo}
-                setNewItem={setNewItem}
-                setShowForm={setShowForm}
-                id={0}
-                setOrigin={setOrigin}
-            />
-            <Card
-                title={"Working On It"}
-                classPlus={"doing"}
-                cardItems={doing}
-                setNewItem={setNewItem}
-                setShowForm={setShowForm}
-                id={1}
-                setOrigin={setOrigin}
-            />
-            <Card
-                title={"Done"}
-                classPlus={"done"}
-                cardItems={done}
-                setNewItem={setNewItem}
-                setShowForm={setShowForm}
-                id={2}
-                setOrigin={setOrigin}
-            />
-          </div>
+          <React.StrictMode>
+
+              <Header setShowForm={setShowForm} setNewItem={setNewItem}/>
+              <div className={"body "+mod}>
+                <Card
+                    title={`Ready To Start`}
+                    classPlus={"todo"}
+                    cardItems={todo}
+                    setNewItem={setNewItem}
+                    setShowForm={setShowForm}
+                    id={0}
+                />
+                <Card
+                    title={"Working On It"}
+                    classPlus={"doing"}
+                    cardItems={doing}
+                    setNewItem={setNewItem}
+                    setShowForm={setShowForm}
+                    id={1}
+                />
+                <Card
+                    title={"Done"}
+                    classPlus={"done"}
+                    cardItems={done}
+                    setNewItem={setNewItem}
+                    setShowForm={setShowForm}
+                    id={2}
+                />
+              </div>
+          </React.StrictMode>
           {showForm&&
               <Form
                     background={background}
@@ -68,7 +67,6 @@ function App() {
                     setShowForm={setShowForm}
                     newItem={newItem}
                     arraySetter={[setTodo,setDoing,setDone]}
-                    origin={origin}
             />}
       </div>
   );

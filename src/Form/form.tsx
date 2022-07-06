@@ -8,11 +8,11 @@ const Form : React.FC<{
     setShowForm:Dispatch<SetStateAction<boolean>>,
     newItem:cardItemItf,
     arraySetter:Dispatch<SetStateAction<cardItemItf[]>>[],
-    origin:cardItemStatusEnm,
 }> = (props) =>{
 
-    const {arraySetter,origin,setBackground,background, newItem, setShowForm} = props;
+    const {arraySetter,setBackground,background, newItem, setShowForm} = props;
     const [setTodo,setDoing,setDone]=arraySetter;
+    const origin=newItem.status;
     let click=()=>{
         window.removeEventListener("click",click);
         setShowForm(false);
@@ -63,10 +63,12 @@ const Form : React.FC<{
                     }
                     </select>
                 </span>
-
+                <span>
+                </span>
                 <span className={"form__item"}>
                     <button onClick={(event)=>{
                         event.preventDefault();
+                        event.stopPropagation();
                         if(title.trim()===""||desc.trim()===""){
                             alert("do not leave input empty");
                         }
@@ -77,6 +79,30 @@ const Form : React.FC<{
                                 description:desc,
                                 status:status
                             }
+                            switch (origin) {
+                                case cardItemStatusEnm.TODO:
+                                    setTodo((prevState) => {
+                                        let index=prevState.indexOf(newItem);
+                                        prevState.splice(index,1);
+                                        return prevState;
+                                    })
+                                    break;
+                                case cardItemStatusEnm.DOING:
+                                    setDoing((prevState)=> {
+                                        prevState.splice(prevState.indexOf(newItem),1);
+                                        return prevState;
+                                    })
+                                    break;
+                                case cardItemStatusEnm.DONE:
+                                    setDone((prevState)=> {
+                                        prevState.splice(prevState.indexOf(newItem),1);
+                                        return prevState;
+                                    })
+                                    break;
+                                default:
+                                    break;
+                            }
+
                             switch (status) {
                                 case cardItemStatusEnm.TODO:
                                     setTodo((prevState) => [...prevState,item])
@@ -86,28 +112,6 @@ const Form : React.FC<{
                                     break;
                                 case cardItemStatusEnm.DONE:
                                     setDone((prevState)=>[...prevState,item])
-                                    break;
-                            }
-                            switch (origin) {
-                                case cardItemStatusEnm.TODO:
-                                    setTodo((prevState) => {
-                                        prevState.splice(prevState.indexOf(item),1);
-                                        return prevState;
-                                    })
-                                    break;
-                                case cardItemStatusEnm.DOING:
-                                    setDoing((prevState)=> {
-                                        prevState.splice(prevState.indexOf(item),1);
-                                        return prevState;
-                                    })
-                                    break;
-                                case cardItemStatusEnm.DONE:
-                                    setDone((prevState)=> {
-                                        prevState.splice(prevState.indexOf(item),1);
-                                        return prevState;
-                                    })
-                                    break;
-                                default:
                                     break;
                             }
                         }

@@ -8,4 +8,4 @@ export interface cardItemItf{
     title : string ;
     description : string;
     status: cardItemStatusEnm;
-};
+}

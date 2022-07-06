@@ -4,7 +4,7 @@ import {cardItemItf} from '../interface/template';
 export const CardItem : React.FC<{
     item:cardItemItf,
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
-    setShowForm:Dispatch<SetStateAction<boolean>>
+    setShowForm:Dispatch<SetStateAction<boolean>>,
 }> = (props) =>{
     let {item,setNewItem,setShowForm}=props;
     let {title,description,status}=item;
@@ -28,7 +28,7 @@ export const CardItem : React.FC<{
                         <p>{description}</p>
                     </>
             }
-            <span onClick={(event)=>{
+            <span onClick={()=>{
                 setNewItem(item);
                 setShowForm(true);
             }}>

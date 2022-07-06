@@ -1,5 +1,5 @@
 import './card.modules.css';
-import {cardItemItf, cardItemStatusEnm} from '../interface/template';
+import {cardItemItf} from '../interface/template';
 import {CardItem} from "../cardItem/cardItem";
 import React, {Dispatch, SetStateAction} from "react";
 
@@ -9,8 +9,7 @@ const List : React.FC<{
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
     classPlus:string,
     setShowForm:Dispatch<SetStateAction<boolean>>,
-    id:number,
-    setOrigin:Dispatch<SetStateAction<cardItemStatusEnm>>
+    id:number
 
 }> = (props) =>{
 
