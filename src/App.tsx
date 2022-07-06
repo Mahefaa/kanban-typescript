@@ -4,6 +4,7 @@ import './Card/Card';
 import Card from "./Card/Card";
 import {cardItemItf, cardItemStatusEnm} from "./interface/template";
 import Form from "./Form/form";
+
 function App() {
 
     const [todo,setTodo] = useState<cardItemItf[]>(new Array(3).fill(null)
@@ -24,6 +25,7 @@ function App() {
     const [newItem,setNewItem]=useState<cardItemItf>({} as cardItemItf);
     const [showForm,setShowForm]=useState<boolean>(false);
     const [background,setBackground]=useState<string>("todo");
+    const [origin,setOrigin]=useState<cardItemStatusEnm>("" as cardItemStatusEnm);
     let mod=showForm?"blurred":"";
   return (
       <div className={"App"}>
@@ -39,6 +41,7 @@ function App() {
                 setNewItem={setNewItem}
                 setShowForm={setShowForm}
                 id={0}
+                setOrigin={setOrigin}
             />
             <Card
                 title={"Working On It"}
@@ -47,7 +50,8 @@ function App() {
                 setNewItem={setNewItem}
                 setShowForm={setShowForm}
                 id={1}
-                    />
+                setOrigin={setOrigin}
+            />
             <Card
                 title={"Done"}
                 classPlus={"done"}
@@ -55,16 +59,16 @@ function App() {
                 setNewItem={setNewItem}
                 setShowForm={setShowForm}
                 id={2}
-                    />
+                setOrigin={setOrigin}
+            />
           </div>
           {showForm&&<Form classPlus={background} setBackground={setBackground}
-                            setShowForm={setShowForm} setNewItem={setNewItem}
-                           setTodo={setTodo}
-                           array={[todo,doing,done]}
+                            setShowForm={setShowForm} newItem={newItem}
+                           arraySetter={[setTodo,setDoing,setDone]}
+                           origin={origin}
+                           setOrigin={setOrigin}
           />}
       </div>
-
   );
 }
-
 export default App;

@@ -1,5 +1,5 @@
 import './card.modules.css';
-import {cardItemItf} from '../interface/template';
+import {cardItemItf, cardItemStatusEnm} from '../interface/template';
 import {CardItem} from "../cardItem/cardItem";
 import React, {Dispatch, SetStateAction} from "react";
 
@@ -9,7 +9,8 @@ const List : React.FC<{
     setNewItem:Dispatch<SetStateAction<cardItemItf>>,
     classPlus:string,
     setShowForm:Dispatch<SetStateAction<boolean>>,
-    id:number
+    id:number,
+    setOrigin:Dispatch<SetStateAction<cardItemStatusEnm>>
 
 }> = (props) =>{
 
@@ -23,7 +24,9 @@ const List : React.FC<{
             <ul>
                 {
                     cardItems.map((item)=>(
-                    <li key={`${item.title}-${item.status}`}><CardItem item={item} setNewItem={setNewItem}/></li>
+                    <li key={`${item.title}-${item.status}`}>
+                        <CardItem item={item} setNewItem={setNewItem} setShowForm={setShowForm}/>
+                    </li>
                 ))}
             <span className={"add__item"}>
                 <label htmlFor={"button"+id}>+ Add item</label>
